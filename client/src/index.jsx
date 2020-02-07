@@ -3,10 +3,6 @@ import ReactDOM from 'react-dom';
 import FollowButton from './components/FollowButton.jsx';
 import $ from 'jquery';
 
-const round = {
-  borderRadius: "50%"
-};
-
 class User extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +27,6 @@ class User extends React.Component {
     $.ajax({
       url: `/decrementFollowers/${this.state.username}`,
       type: 'PATCH',
-      // data: { username: this.state.username },
       success: (status) => {
         console.log('This is the status inside the succes of PATCH decrement request": ', status);
       },
@@ -42,9 +37,9 @@ class User extends React.Component {
   } else {
     this.setState({isFollowed: !this.state.isFollowed, followers: this.state.followers + 1 });
     $.ajax({
-      url: '/incrementFollowers',
+      url: `/incrementFollowers/${this.state.username}`,
       type: 'PATCH',
-      data: { username: this.state.username },
+      // data: { username: this.state.username },
       success: (status) => {
         console.log('This is the status inside the succes of PATCH increment request": ', status);
       },

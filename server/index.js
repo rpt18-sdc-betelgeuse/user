@@ -48,8 +48,8 @@ app.patch('/decrementFollowers/:username', (req, res) => {
   });
 });
 
-app.patch('/incrementFollowers', (req, res) => {
-  console.log('This is the incrementFollowers PATCH req.body: ', req.body);
+app.patch('/incrementFollowers/:username', (req, res) => {
+  console.log('This is the incrementFollowers PATCH req.params.: ', req.body);
   db.incrementFollowers(req.body.username, (err) => {
     if (err) {
       console.log('this is the err from incrementFollowers: ', err);
