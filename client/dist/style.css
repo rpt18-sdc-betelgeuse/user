@@ -1,0 +1,129 @@
+.circle {
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.user_module_username_container {
+  font-family: InterstateSound Tnum,Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+span .user_follwers_icon {
+  display: flex;
+}
+
+.user_meta-data_container {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 11px;
+  line-height: 12px;
+  font-family: InterstateSound Tnum,Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+  font-weight: 100;
+  color: #999;
+  cursor: pointer;
+}
+
+.user_module_username {
+  color: #333;
+  margin-bottom: 10px;
+  margin-left: 5px;
+  font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
+
+
+.svg-inline--fa {
+  width: 20px;
+  height:20px;
+}
+
+.user_followers_stats{
+  display: flex;
+  cursor: pointer;
+}
+
+.user_followers_icon {
+  width: 16px;
+  height: 12px;
+}
+
+.user_followers {
+ margin-left: 5px;
+ margin-right: 5px;
+}
+
+i.add_follow_icon {
+  background-color: #f50;
+  border-color: #f50;
+  color: #fff;
+}
+
+i.following_icon {
+  background-color: #fff;
+  border-color: #f50;
+  color: #f50;
+}
+
+.user_tracks_container {
+  margin-left: 5px;
+}
+
+.user_tracks_icon {
+  margin-left: 5px;
+  margin-right:5px;
+  color: #000;
+}
+
+.fa-user-check {
+  color: #f50;
+}
+
+.user_add_follow_btn {
+  background-color: #f50;
+  border-color: #f50;
+  color: #fff;
+  padding: 2px 9px 2px 8px;
+  height: 22px;
+  line-height: 16px;
+  border-radius: 3px;
+  margin-top: 10px;
+  margin-left: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.user_following_btn {
+  background-color: #fff;
+  border-color: #f50;
+  color: #f50;
+  padding: 2px 9px 2px 8px;
+  height: 22px;
+  line-height: 16px;
+  border-radius: 3px;
+  margin-top: 5px;
+  cursor: pointer;
+  outline: none;
+}
+
+.report_button_container {
+  margin-top: 23px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.report_button_exclamation_icon {
+  font-size: 0.5rem;
+  display: inline-block;
+}
+
+.fa-exclamation {
+  color:white;
+
+}
+
+.report_text {
+  font-size: 11px;
+  color: #666;
+  font-family: Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+}
