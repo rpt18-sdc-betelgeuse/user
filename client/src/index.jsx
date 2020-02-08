@@ -18,6 +18,7 @@ class User extends React.Component {
       isFollowed: false
     }
     this.handleAddFollowClick = this.handleAddFollowClick.bind(this);
+    this.url = process.env.URL || 'http://localhost:4000';
   }
 
   handleAddFollowClick( ) {
@@ -25,7 +26,7 @@ class User extends React.Component {
     if (this.state.isFollowed === true) {
     this.setState({isFollowed: !this.state.isFollowed, followers: this.state.followers - 1});
     $.ajax({
-      url: `/decrementFollowers/${this.state.username}`,
+      url: `${this.url}/decrementFollowers/${this.state.username}`,
       type: 'PATCH',
       success: (status) => {
         console.log('This is the status inside the succes of PATCH decrement request": ', status);
@@ -37,7 +38,7 @@ class User extends React.Component {
   } else {
     this.setState({isFollowed: !this.state.isFollowed, followers: this.state.followers + 1 });
     $.ajax({
-      url: `/incrementFollowers/${this.state.username}`,
+      url: `${this.url}/incrementFollowers/${this.state.username}`,
       type: 'PATCH',
       // data: { username: this.state.username },
       success: (status) => {
@@ -52,7 +53,7 @@ class User extends React.Component {
 
   componentDidMount(){
     $.ajax({
-      url: '/getUserById/101',
+      url: `${this.url}/getUserById/101`,
       type: 'GET',
       success: (results) => {
         console.log('This is the result of /getUserById request: ', results);

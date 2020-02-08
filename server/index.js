@@ -1,12 +1,14 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
-// const port = 4000;
 const db = require('../database/index.js');
 
 app.use(express.static('client/dist'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
+
 
 app.get('/getUserById/:userId', (req, res) => {
   console.log('This is the req.params.userId: ', req.params.userId);
@@ -59,5 +61,3 @@ app.patch('/incrementFollowers/:username', (req, res) => {
 });
 
 module.exports = app;
-
-//app.listen(port, () => { console.log(`Server is running on ${port}`); });
