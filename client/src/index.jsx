@@ -126,4 +126,4 @@ class User extends React.Component {
   }
 }
 
-ReactDOM.render(<User />, document.getElementById('app'));
+ReactDOM.render(<User />, document.getElementById('user'));
