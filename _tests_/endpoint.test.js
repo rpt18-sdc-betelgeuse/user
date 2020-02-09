@@ -15,21 +15,10 @@ const request = supertest(app);
 describe('Get /getUserByID', function () {
   test('Gets the getUserById endpoint', async done => {
 
-    const response = await request.get('/getUserById/101');
+    const response = await request.get('/getUserById/1');
 
     expect(response.status).toBe(200);
-    expect(response.body.name).toBe('JimHendrix');
-    done();
-  });
-});
-
-describe('Get /getUserByName', function () {
-  test('Gets the getUserById endpoint', async done => {
-
-    const response = await request.get('/getUserByName/JimHendrix');
-
-    expect(response.status).toBe(200);
-    expect(response.body.id).toBe(101);
+    expect(response.body.image_url).toBe("http://d2tlnaqrf4t9d7.cloudfront.net/UserId+photos+for+S3/userId1.jpeg");
     done();
   });
 });
