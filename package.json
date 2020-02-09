@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest --detectOpenHandles",
     "build": "webpack -w",
-    "start": "nodemon server/start.js"
+    "start": "nodemon server/start.js",
+    "seed": "node database/seed.js"
   },
   "repository": {
     "type": "git",

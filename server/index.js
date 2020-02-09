@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 
 const app = express();
-const db = require('../database/index.js');
+const c = require('./controller.js');
 
 app.use(express.static('client/dist'));
 app.use(express.json());
@@ -10,54 +10,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 
-app.get('/getUserById/:userId', (req, res) => {
-  console.log('This is the req.params.userId: ', req.params.userId);
-  db.getUserById(req.params.userId, (err, results) => {
-    if (err) {
-      console.log('this is the err from getUserById: ', err);
-    }
-    res.send(results);
-  });
-});
+app.get('/getUserById/:userId', c.getUserById);
 
-app.get('/getUserByName/:username', (req, res) => {
-  console.log('This is the req.params.username: ', req.params.username);
-  db.getUserByName(req.params.username, (err, results) => {
-    if (err) {
-      console.log('this is the err from getUserByName: ', err);
-    }
-    res.send(results);
-  });
-});
+app.get('/getUserByName/:username', c.getUserByName);
 
-app.get('/users', (req, res) => {
-  console.log('GET users has been activated');
-  db.getAllUsers((err, results) => {
-    if (err) {
-      console.log('this is the err from getAllUsers: ', err);
-    }
-    res.send(results);
-  });
-});
+app.get('/users', c.getAllUsers);
 
-app.patch('/decrementFollowers/:username', (req, res) => {
-  console.log('This is the decrementFollowers PATCH req.params.username: ', req.params.username);
-  db.decrementFollowers(req.params.username, (err) => {
-    if (err) {
-      console.log('this is the err from decrementFollowers: ', err);
-    }
-    res.sendStatus(200);
-  });
-});
+app.patch('/decrementFollowers/:username', c.decrementFollower);
 
-app.patch('/incrementFollowers/:username', (req, res) => {
-  console.log('This is the incrementFollowers PATCH req.params.: ', req.body);
-  db.incrementFollowers(req.body.username, (err) => {
-    if (err) {
-      console.log('this is the err from incrementFollowers: ', err);
-    }
-    res.sendStatus(200);
-  });
-});
+app.patch('/incrementFollowers/:username', c.incrementFollower);
 
 module.exports = app;
