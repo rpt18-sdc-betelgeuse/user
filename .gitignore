@@ -24,6 +24,6 @@ coverage
 build/
 
 #AWS access keys
-aws.js
+aws-keys.json
 
 
