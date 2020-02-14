@@ -1,7 +1,29 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/soundcloud', {
+
+// const MongoClient = require('mongodb').MongoClient;
+// const uri = "mongodb+srv://Shain:G1mm3m0ng0@cluster0-xgt6f.mongodb.net/test1?retryWrites=true&w=majority";
+// const client = new MongoClient(uri, { useNewUrlParser: true });
+// client.connect(err => {
+
+//   if (err) {
+//     console.log(err);
+//   } else { console.log('connected'); }
+//   const collection = client.db("test1").collection("devices");
+//   // perform actions on the collection object
+//   //client.close();
+// });
+
+
+
+mongoose.connect("mongodb+srv://Shain:G1mm3m0ng0@cluster0-xgt6f.mongodb.net/soundcloud?retryWrites=true&w=majority", {
   useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false,
+}, (err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('connected');
+  }
 });
 
 const userSchema = mongoose.Schema({
