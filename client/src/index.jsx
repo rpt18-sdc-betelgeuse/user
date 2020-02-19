@@ -18,7 +18,9 @@ class User extends React.Component {
       isFollowed: false
     }
     this.handleAddFollowClick = this.handleAddFollowClick.bind(this);
-    this.url = process.env.URL || 'http://localhost:4000';
+    console.log('This is the process.env.API_URL: ', process.env.API_URL);
+    console.log('This is the process.env.REACT_APP_API_URL: ', process.env.REACT_APP_API_URL);
+    this.url = process.env.API_URL || 'http://54.219.157.13:4001';
   }
 
   handleAddFollowClick( ) {

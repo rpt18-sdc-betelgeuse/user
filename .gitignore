@@ -26,4 +26,5 @@ build/
 #AWS access keys
 aws-keys.json
 
-
+#.env
+.env

@@ -1,5 +1,10 @@
 const mongoose = require('mongoose');
 
+const dotenv = require('dotenv');
+
+dotenv.config({
+  path: './.env',
+});
 
 // const MongoClient = require('mongodb').MongoClient;
 // const uri = "mongodb+srv://Shain:G1mm3m0ng0@cluster0-xgt6f.mongodb.net/test1?retryWrites=true&w=majority";
@@ -16,8 +21,8 @@ const mongoose = require('mongoose');
 
 
 
-mongoose.connect("mongodb+srv://Shain:G1mm3m0ng0@cluster0-xgt6f.mongodb.net/soundcloud?retryWrites=true&w=majority", {
-  useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false,
+mongoose.connect(process.env.MONGO_URI, {
+	useUnifiedTopology:true,  useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false,
 }, (err) => {
   if (err) {
     console.log(err);
