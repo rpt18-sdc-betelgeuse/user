@@ -1,6 +1,7 @@
 const db = require('../database/index.js');
 
 module.exports.getUserById = (req, res) => {
+  console.log('hitting get user by id')
   db.getUserById(req.params.userId, (err, results) => {
     if (err) {
       res.status(404).send('user not found');

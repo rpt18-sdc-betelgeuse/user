@@ -18,8 +18,8 @@ class User extends React.Component {
       isFollowed: false
     }
     this.handleAddFollowClick = this.handleAddFollowClick.bind(this);
-    this.url = process.env.API_URL || 'http://localhost:4001';
-
+    this.url = 'http://54.219.157.13:4001';
+    //cheese
   }
 
   handleAddFollowClick( ) {
@@ -40,7 +40,7 @@ class User extends React.Component {
 
   componentDidMount(){
     $.ajax({
-      url: `${this.url}/getUserById/1`,
+      url: `http://54.219.157.13:4001/getUserById/1`,
       type: 'GET',
       success: (results) => {
         console.log('This is the result of /getUserById request: ', results);
