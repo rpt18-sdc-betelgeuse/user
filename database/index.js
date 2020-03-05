@@ -22,7 +22,7 @@ dotenv.config({
 
 
 
-mongoose.connect(process.env.MONGO_URI, {
+mongoose.connect(/*process.env.MONGO_URI*/"mongodb+srv://Shain:G1mm3m0ng0@cluster0-xgt6f.mongodb.net/soundcloud?retryWrites=true&w=majority", {
   useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false,
 }, (err) => {
   if (err) {
