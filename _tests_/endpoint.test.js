@@ -2,16 +2,6 @@ const app = require('../server/index.js');
 const supertest = require('supertest');
 const request = supertest(app);
 
-// beforeAll(done => {
-//   done();
-// });
-
-// afterAll(done => {
-//   // Closing the DB connection allows Jest to exit successfully.
-//   mongoose.connection.close();
-//   done();
-// });
-
 describe('Get /getUserByID', function () {
   test('Gets the getUserById endpoint', async done => {
 

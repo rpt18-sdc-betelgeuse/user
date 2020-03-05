@@ -1,11 +1,18 @@
 const path = require('path');
 
+// const dotenv = require('dotenv');
+
+// //setting up the dotenv config
+// dotenv.config({
+//   path: './.env'
+// })
+
 const SRC_DIR = path.join(__dirname, '/client/src');
 
 const DIST_DIR = path.join(__dirname, '/client/dist');
 
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   entry: SRC_DIR,
   module: {
     rules: [
