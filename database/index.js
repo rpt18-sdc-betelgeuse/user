@@ -21,8 +21,7 @@ dotenv.config({
 // });
 
 
-
-mongoose.connect(/*process.env.MONGO_URI*/"mongodb+srv://Shain:G1mm3m0ng0@cluster0-xgt6f.mongodb.net/soundcloud?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGO_URI, {
   useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false,
 }, (err) => {
   if (err) {
@@ -44,6 +43,11 @@ const userSchema = mongoose.Schema({
 
 const User = mongoose.model('User', userSchema);
 
+const createUser = (userObj, callback) => {
+  const newUser = new User(userObj);
+  newUser.save().exec(callback);
+};
+
 const getUserById = (ID, callback) => {
   User.findOne({ id: ID }).exec(callback);
 };
@@ -64,6 +68,7 @@ const incrementFollowers = (username, callback) => {
   User.findOneAndUpdate({ name: username }, { $inc: { follower_count: 1 } }).exec(callback);
 };
 
+module.exports.createUser = createUser;
 module.exports.getUserById = getUserById;
 module.exports.decrementFollowers = decrementFollowers;
 module.exports.incrementFollowers = incrementFollowers;

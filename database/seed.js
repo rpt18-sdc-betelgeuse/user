@@ -11,7 +11,9 @@ for (let i = 1; i < 101; i++) {
   const track_count = faker.random.number(50);
   const follower_count = faker.random.number(2000);
   const join_date = faker.date.past(10, '2020-01-01');
-  const user = { id, handle, name, image_url, track_count, follower_count, join_date };
+  const user = {
+    id, handle, name, image_url, track_count, follower_count, join_date,
+  };
   console.log(user);
   users.push(user);
 }

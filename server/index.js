@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
+app.post('/users', c.createUser);
 
 app.get('/getUserById/:userId', c.getUserById);
 

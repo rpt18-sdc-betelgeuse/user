@@ -1,5 +1,14 @@
 const db = require('../database/index.js');
 
+module.exports.createUser = (req, res) => {
+  db.createUser(req.body, (err, results) => {
+    if (err) {
+      res.status(500).send('could not create user');
+    }
+    res.status(201).send('user created');
+  });
+};
+
 module.exports.getUserById = (req, res) => {
   console.log('hitting get user by id');
   db.getUserById(req.params.userId, (err, results) => {
