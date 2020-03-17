@@ -11,7 +11,7 @@ module.exports.createUser = (req, res) => {
 
 module.exports.getUserById = (req, res) => {
   console.log('hitting get user by id');
-  db.getUserById(req.params.userId, (err, results) => {
+  db.getUserById(req.params.id, (err, results) => {
     if (err) {
       res.status(404).send('user not found');
     }
@@ -52,5 +52,14 @@ module.exports.incrementFollower = (req, res) => {
       res.status(404).send('incrementing followers failed');
     }
     res.sendStatus(200);
+  });
+};
+
+module.exports.deleteUser = (req, res) => {
+  db.deleteUser(req.params.id, (err) => {
+    if (err) {
+      res.status(500).send('could not delete user');
+    }
+    res.status(200).send('user deleted');
   });
 };

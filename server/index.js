@@ -11,6 +11,8 @@ app.use(cors());
 
 app.post('/users', c.createUser);
 
+app.delete('/users/:id', c.deleteUser);
+
 app.get('/getUserById/:userId', c.getUserById);
 
 app.get('/getUserByName/:username', c.getUserByName);

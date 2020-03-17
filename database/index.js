@@ -45,7 +45,13 @@ const User = mongoose.model('User', userSchema);
 
 const createUser = (userObj, callback) => {
   const newUser = new User(userObj);
-  newUser.save().exec(callback);
+  newUser.save(newUser)
+    .then((data) => {
+      callback(data);
+    })
+    .catch((error) => {
+      callback(null, error);
+    });
 };
 
 const getUserById = (ID, callback) => {
@@ -68,6 +74,10 @@ const incrementFollowers = (username, callback) => {
   User.findOneAndUpdate({ name: username }, { $inc: { follower_count: 1 } }).exec(callback);
 };
 
+const deleteUser = (ID, callback) => {
+  User.findOneAndDelete({ id: ID }).exec(callback);
+};
+
 module.exports.createUser = createUser;
 module.exports.getUserById = getUserById;
 module.exports.decrementFollowers = decrementFollowers;
@@ -75,3 +85,4 @@ module.exports.incrementFollowers = incrementFollowers;
 module.exports.getAllUsers = getAllUsers;
 module.exports.getUserByName = getUserByName;
 module.exports.User = User;
+module.exports.deleteUser = deleteUser;
