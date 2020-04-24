@@ -1,5 +1,5 @@
 const faker = require('faker');
-const db = require('./index');
+const db = require('./mongo');
 
 const users = [];
 

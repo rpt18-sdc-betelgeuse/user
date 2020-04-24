@@ -10,7 +10,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
 # Database Variable Definitions
 DATABASE="sdcuser"
-USER="cheeseuser"
+USER="postgres"
 
 # Output Filename for Faker File
 OUTPUT="users.csv"

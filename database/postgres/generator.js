@@ -7,11 +7,15 @@ const lines = argv.lines || 1000000;
 const filename = argv.output || 'users.csv';
 const stream = fs.createWriteStream(filename);
 
+function randomBetween(min, max) {
+  return Math.floor(min + Math.random() * max);
+}
 
 const createUser = (i) => {
+  const photoNum = randomBetween(1, 1000);
   const handle = faker.name.findName();
   const name = faker.name.findName();
-  const image_url = `http://d2tlnaqrf4t9d7.cloudfront.net/UserId+photos+for+S3/userId${i}.jpeg`;
+  const image_url = `d2sx1418v3pj88.cloudfront.net/img/userId${photoNum}.jpeg`;
   const track_count = faker.random.number(50);
   const follower_count = faker.random.number(2000);
   // const join_date = faker.date.between('2019-01-01', '2021-01-05');

@@ -1,37 +1,21 @@
 const Sequelize = require('sequelize');
 
-const sequelize = new Sequelize('sdcuser', 'cheeseuser', 'qwerty', {
+const sequelize = new Sequelize('sdcuser', 'postgres', 'qwerty', {
   host: 'localhost',
+  port: '5432',
   dialect: 'postgres',
 });
 
-// sequelize
-//   .authenticate()
-//   .then(() => {
-//     console.log('Connection has been established successfully.');
-//   })
-//   .catch((err) => {
-//     console.error('Unable to connect to the database:', err);
-//   });
-
-// const id = i;
-// const handle = faker.name.findName();
-// const name = faker.name.findName();
-// const image_url = `http://d2tlnaqrf4t9d7.cloudfront.net/UserId+photos+for+S3/userId${i}.jpeg`;
-// const track_count = faker.random.number(50);
-// const follower_count = faker.random.number(2000);
-// const join_date = faker.date.past(10, '2020-01-01');
-// const user = {
-//   id, handle, name, image_url, track_count, follower_count, join_date,
-// };
+sequelize.authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch((err) => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 // ORM table mapping
-const User = sequelize.define('user', {
-  id: {
-    type: Sequelize.INTEGER,
-    allowNull: false,
-    primaryKey: true,
-  },
+const User = sequelize.define('users', {
   handle: {
     type: Sequelize.STRING,
     allowNull: false,
@@ -45,7 +29,7 @@ const User = sequelize.define('user', {
     allowNull: false,
   },
   track_count: {
-    type: Sequelize.INTEGER, // will implement bcrypt or something similar later
+    type: Sequelize.INTEGER,
     allowNull: false,
   },
   follower_count: {
@@ -56,8 +40,77 @@ const User = sequelize.define('user', {
     type: Sequelize.DATEONLY,
     allowNull: false,
   },
+}, {
+  timestamps: false,
 });
 
 sequelize.sync();
+module.exports.User = User;
 
-module.exports = User;
+// Create a new user
+// const createUser = (userObj, callback) => {
+//   // console.log("cheeeese", userObj);
+//   //const newUser = new User(userObj);
+//   sequelize.sync({ force: true })
+//     .then( () => {
+//       User.create(userObj)
+//     })
+//     .then(savedUser => {
+//       callback(savedUser);
+//       console.log("Users auto-generated ID:", savedUser.id);
+//     })
+//     .catch( (err) => {
+//       console.log('error', err)
+//     });
+// }
+
+// const createUser = (userObj, callback) => {
+//   const newUser = new User(userObj);
+//   newUser.save(newUser)
+//     .then((data) => {
+//       callback(data);
+//     })
+//     .catch((error) => {
+//       callback(null, error);
+//     });
+// };
+
+// const getUserById = (ID, callback) => {
+//   User.findOne({ id: ID }).exec(callback);
+// };
+
+// const getUserByName = (username, callback) => {
+//   User.findOne({ name: username }).exec(callback);
+// };
+
+// const getAllUsers = (callback) => {
+//   User.find({}).exec(callback);
+// };
+
+// const decrementFollowers = (username, callback) => {
+//   User.findOneAndUpdate({ name: username }, { $inc: { follower_count: -1 } }).exec(callback);
+// };
+
+// const incrementFollowers = (username, callback) => {
+//   User.findOneAndUpdate({ name: username }, { $inc: { follower_count: 1 } }).exec(callback);
+// };
+
+// const updateUser = (id, data, callback) => {
+//   User.findByIdAndUpdate(id, data).exec(callback);
+// };
+
+// const deleteUser = (query, callback) => {
+//   User.findOneAndDelete(query).exec(callback);
+// };
+
+// module.exports.createUser = createUser;
+// module.exports.getUserById = getUserById;
+// module.exports.decrementFollowers = decrementFollowers;
+// module.exports.incrementFollowers = incrementFollowers;
+// module.exports.getAllUsers = getAllUsers;
+// module.exports.getUserByName = getUserByName;
+// module.exports.User = User;
+// module.exports.deleteUser = deleteUser;
+// module.exports.updateUser = updateUser;
+
+// module.exports.createUser = createUser;
