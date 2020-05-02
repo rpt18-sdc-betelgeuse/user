@@ -1,0 +1,12 @@
+.git
+.gitignore
+.circleci
+database/cassandra
+postgres/*.csv
+node_modules
+client
+Dockerfile*
+docker-compose*
+npm-debug.log
+nginx
+.env
