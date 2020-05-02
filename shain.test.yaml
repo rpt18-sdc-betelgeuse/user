@@ -1,0 +1,35 @@
+config:
+  target: http://localhost:4009
+  phases:
+    - duration: 10
+      arrivalRate: 1
+      name: "warm up 1 rps for 10 seconds"
+    - duration: 10
+      arrivalRate: 1
+      rampTo: 10
+      name: "rampUp 1-10 in 10 seconds"
+    - duration: 120
+      arrivalRate: 10
+      rampTo: 100
+      name: "rampUp 10-100 in 2 mins"
+    - duration: 60
+      arrivalRate: 100
+      name: "100 plateau for 1 min"
+    - duration: 240
+      arrivalRate: 100
+      rampTo: 1000
+      name: "rampUp 100-1000 in 4 mins"
+    - duration: 60
+      arrivalRate: 100
+      name: "1000 plateau for 1 min"
+scenarios:
+  - flow:
+      - get:
+          url: "/getUserById/9999999"
+      # - post:
+      #     handle: "/users"
+      #     name: "Cheese Name"
+      #     image_url: "Cheese Image"
+      #     track_count: 22
+      #     follower_count: 11
+      #     join_date: "2019-01-01"

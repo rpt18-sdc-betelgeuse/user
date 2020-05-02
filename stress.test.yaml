@@ -1,0 +1,11 @@
+config:
+  target: http://localhost:4009
+  phases:
+    - duration: 30
+      arrivalRate: 100
+      name: "Basic Test"
+
+scenarios:
+  - flow:
+      - get:
+          url: "/getUserById/9999999"
