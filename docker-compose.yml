@@ -1,0 +1,25 @@
+version: "3"
+services:
+  redis:
+    image: my-redis-image
+    networks:
+      - webnet
+  db:
+    image: my-postgres-image
+    networks:
+      - webnet
+    environment:
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: slack
+  web:
+    image: some-image
+    ports:
+      - "8080:8080"
+    networks:
+      - webnet
+    environment:
+      DB_HOST: db
+      REDIS_HOST: redis
+networks:
+  webnet:
