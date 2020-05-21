@@ -38,26 +38,26 @@ class User extends React.Component {
       isFollowed: false
     }
     this.handleAddFollowClick = this.handleAddFollowClick.bind(this);
-    this.url = /*'localhost:4001';*/'http://54.219.157.13:4001';
-    this.masterId = location.href.substring(location.href.lastIndexOf('/') + 1) || 1
+    this.url = 'http://34.212.22.167';/*'http://54.219.157.13:4001';*/
+    this.masterId = location.href.substring(location.href.lastIndexOf('/') + 1) || 8
     console.log('this.url : ', this.url, 'and this.masterId : ', this.masterId, 'and this is how this thing resolves location.href.substring(location.href.lastIndexOf(\'/\') + 1): ', location.href.substring(location.href.lastIndexOf('/') + 1 ));
     //cheese
   }
 
   handleAddFollowClick( ) {
     if (this.state.isFollowed === true) {
-    this.setState({isFollowed: !this.state.isFollowed, followers: this.state.followers - 1});
-    $.ajax({
-      url: `${this.url}/decrementFollowers/${this.state.username}`,
-      type: 'PATCH'
-    });
-  } else {
-    this.setState({isFollowed: !this.state.isFollowed, followers: this.state.followers + 1 });
-    $.ajax({
-      url: `${this.url}/incrementFollowers/${this.state.username}`,
-      type: 'PATCH'
-    });
-  }
+      this.setState({isFollowed: !this.state.isFollowed, followers: this.state.followers - 1});
+      $.ajax({
+        url: `${this.url}/decrementFollowers/${this.state.username}`,
+        type: 'PATCH'
+      });
+    } else {
+      this.setState({isFollowed: !this.state.isFollowed, followers: this.state.followers + 1 });
+      $.ajax({
+        url: `${this.url}/incrementFollowers/${this.state.username}`,
+        type: 'PATCH'
+      });
+    }
   }
 
   componentDidMount(){
@@ -66,12 +66,13 @@ class User extends React.Component {
       type: 'GET',
       success: (results) => {
         console.log('This is the result of /getUserById request: ', results);
+        let imgProtocol = 'http://';
         this.setState({
           _id: results._id,
           id: results.id,
           handle: results.handle,
           username: results.name,
-          photo: results.image_url,
+          photo: imgProtocol + results.image_url,
           followers: results.follower_count,
           tracks: results.track_count,
           join_date: results.join_date
