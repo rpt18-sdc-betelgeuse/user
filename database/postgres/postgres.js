@@ -1,7 +1,13 @@
 const Sequelize = require('sequelize');
+const dotenv = require('dotenv');
 
-const sequelize = new Sequelize('sdcuser', 'postgres', 'qwerty', {
-  host: 'localhost',
+// setting up the dotenv config
+dotenv.config({
+  path: './.env',
+});
+
+const sequelize = new Sequelize('sdcuser', 'postgres', process.env.DB_PASS, {
+  host: process.env.DB_HOST || 'localhost',
   port: '5432',
   dialect: 'postgres',
 });

@@ -18,10 +18,12 @@ CREATE TABLE IF NOT EXISTS public.users (
   join_date DATE DEFAULT CURRENT_DATE
 );
 
---docker run -v /Users/czilla/Repositories/SDC/postgres-data:/var/lib/postgresql/data -v /Users/czilla/Repositories/SDC/user/database/postgres:/postgres_stuff --name postgres-0 -e POSTGRES_PASSWORD=qwerty -d -p 5432:5432 postgres:alpine
+--docker run -v pgdata:/var/lib/postgresql/data -v /Users/czilla/Repositories/SDC/user/database/postgres:/postgres_stuff --name postgres-0 -e POSTGRES_PASSWORD=qwerty -d -p 5432:5432 postgres:alpine
 --docker exec -it postgres-0 bash
---COPY sdcuser(handle,name,image_url,track_count,follower_count,join_date) FROM '/postgres_stuff/users.csv' DELIMITER ',' CSV HEADER;
+--COPY users(handle,name,image_url,track_count,follower_count,join_date) FROM '/postgres_stuff/users.csv' DELIMITER ',' CSV HEADER;
 --psql -U postgres -f /postgres_stuff/schema.sql
+
+--docker run -v pgdata:/var/lib/postgresql/data -v /home/ubuntu/postgres:/postgres_stuff --name sdc-postgres-container -e POSTGRES_PASSWORD=qwerty -d -p 5432:5432 postgres:alpine
 
 
 
