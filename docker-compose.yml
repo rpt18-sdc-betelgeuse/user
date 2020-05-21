@@ -11,7 +11,7 @@ services:
     environment:
       POSTGRES_USERNAME: postgres
       POSTGRES_PASSWORD: qwerty
-      POSTGRES_DB: slack
+      POSTGRES_DB: sdc-user
   web:
     image: some-image
     ports:

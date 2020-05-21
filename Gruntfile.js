@@ -8,22 +8,22 @@ module.exports = function (grunt) {
     aws_s3: {
       options: {
         accessKeyId: '<%= aws.AWSAccessKeyId %>',
-        secretAccessKey: '<%= aws.AWSSecretKey %>'
+        secretAccessKey: '<%= aws.AWSSecretKey %>',
       },
       dist: {
         options: {
-          bucket: 'fec-soundcloud-user-module'
+          bucket: 'sdc-user',
         },
         files: [
           {
             expand: true,
             cwd: 'client/dist/',
             src: ['**'],
-            dest: '/'
-          }
-        ]
-      }
-    }
+            dest: '/',
+          },
+        ],
+      },
+    },
 
   });
 

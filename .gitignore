@@ -29,4 +29,7 @@ aws-keys.json
 #ENV Variables
 .env
 
+#seeder csv
+users.csv
+
 
